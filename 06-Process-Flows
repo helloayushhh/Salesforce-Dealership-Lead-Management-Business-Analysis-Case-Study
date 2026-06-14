@@ -1,0 +1,480 @@
+# Process Flow Document
+
+# Project Name
+
+Dealership Lead Management Transformation using Salesforce Automotive Cloud
+
+# Version
+
+1.0
+
+# Prepared By
+
+Ayush Pandey
+
+# Date
+
+June 2026
+
+---
+
+# 1. Overview
+
+This document describes the current-state (AS-IS) and future-state (TO-BE) business process flows for dealership lead management. The objective is to identify inefficiencies in the existing process and define an optimized workflow using Salesforce Automotive Cloud.
+
+---
+
+# 2. AS-IS Process Flow (Current State)
+
+## Process: Lead Management
+
+```text
+Customer Inquiry
+        │
+        ▼
+Lead Received Through Multiple Channels
+(Website / Phone / Walk-In / Social Media)
+        │
+        ▼
+Sales Manager Reviews Lead
+        │
+        ▼
+Manual Lead Assignment
+        │
+        ▼
+Sales Representative Contacts Customer
+        │
+        ▼
+Follow-Up Activities Managed Manually
+        │
+        ▼
+Test Drive Scheduling Through Calls/Emails
+        │
+        ▼
+Customer Purchase Decision
+        │
+        ▼
+Vehicle Sale
+```
+
+### Current Process Issues
+
+* Manual lead assignment causes delays.
+* Duplicate customer records exist.
+* No lead prioritization mechanism.
+* Follow-ups are inconsistent.
+* Customer communication history is fragmented.
+* Reporting requires manual effort.
+* Sales managers lack real-time visibility.
+
+---
+
+# 3. TO-BE Process Flow (Future State)
+
+## Process: Automated Lead Management
+
+```text
+Customer Inquiry
+        │
+        ▼
+Lead Captured Automatically
+        │
+        ▼
+Data Validation
+        │
+        ▼
+Duplicate Check
+        │
+        ▼
+Auto Lead Assignment
+        │
+        ▼
+Sales Representative Notification
+        │
+        ▼
+Lead Qualification
+        │
+        ▼
+Customer Follow-Up
+        │
+        ▼
+Test Drive Scheduling
+        │
+        ▼
+Lead Conversion
+        │
+        ▼
+Opportunity Creation
+        │
+        ▼
+Vehicle Sale
+        │
+        ▼
+Performance Reporting
+```
+
+### Expected Improvements
+
+* Reduced response time.
+* Automated lead routing.
+* Better customer engagement.
+* Improved conversion rates.
+* Centralized customer data.
+* Real-time reporting.
+
+---
+
+# 4. Detailed Process Flow – Lead Capture
+
+## Objective
+
+Capture customer inquiries from multiple channels and create lead records in Salesforce.
+
+### Process Flow
+
+```text
+Customer Submits Inquiry
+        │
+        ▼
+System Receives Data
+        │
+        ▼
+Validate Mandatory Fields
+        │
+        ├───────────── No ─────────────► Display Validation Error
+        │
+       Yes
+        │
+        ▼
+Check Duplicate Records
+        │
+        ├──────────── Duplicate Found ───────────► Display Existing Lead
+        │
+        ▼
+Create Lead Record
+        │
+        ▼
+Set Status = New
+        │
+        ▼
+Trigger Assignment Process
+```
+
+### Inputs
+
+* Customer Name
+* Email Address
+* Mobile Number
+* Preferred Vehicle
+* Lead Source
+
+### Outputs
+
+* Salesforce Lead Record
+* Lead ID Generated
+
+---
+
+# 5. Detailed Process Flow – Lead Assignment
+
+## Objective
+
+Assign leads automatically to the most appropriate sales representative.
+
+### Process Flow
+
+```text
+Lead Created
+        │
+        ▼
+Identify Dealership Branch
+        │
+        ▼
+Evaluate Assignment Rules
+        │
+        ▼
+Check Representative Availability
+        │
+        ├──────── No Available Rep ───────► Assign To Sales Manager
+        │
+       Yes
+        │
+        ▼
+Assign Lead
+        │
+        ▼
+Send Notification
+        │
+        ▼
+Update Lead Owner
+```
+
+### Assignment Criteria
+
+1. Branch Location
+2. Vehicle Category
+3. Representative Availability
+4. Round-Robin Distribution
+
+### Output
+
+Assigned Lead Record
+
+---
+
+# 6. Detailed Process Flow – Lead Qualification
+
+## Objective
+
+Determine customer purchase intent and readiness.
+
+### Process Flow
+
+```text
+Lead Assigned
+        │
+        ▼
+Sales Representative Reviews Lead
+        │
+        ▼
+Contact Customer
+        │
+        ▼
+Collect Customer Requirements
+        │
+        ▼
+Evaluate Qualification Criteria
+        │
+        ├──────── Not Qualified ─────────► Lead Nurturing Process
+        │
+       Qualified
+        │
+        ▼
+Update Lead Status
+        │
+        ▼
+Create Follow-Up Activity
+        │
+        ▼
+Proceed To Test Drive Scheduling
+```
+
+### Qualification Factors
+
+* Budget Availability
+* Purchase Timeline
+* Vehicle Interest
+* Customer Engagement
+
+### Output
+
+Qualified Lead
+
+---
+
+# 7. Detailed Process Flow – Test Drive Scheduling
+
+## Objective
+
+Schedule vehicle test drives for qualified leads.
+
+### Process Flow
+
+```text
+Qualified Lead
+        │
+        ▼
+Select Vehicle
+        │
+        ▼
+Check Availability
+        │
+        ├──────── Vehicle Unavailable ─────► Suggest Alternative Vehicle
+        │
+       Available
+        │
+        ▼
+Select Date & Time
+        │
+        ▼
+Create Appointment
+        │
+        ▼
+Send Confirmation Notification
+        │
+        ▼
+Update Appointment Calendar
+```
+
+### Output
+
+Confirmed Test Drive Appointment
+
+---
+
+# 8. Detailed Process Flow – Opportunity Creation
+
+## Objective
+
+Convert qualified leads into active sales opportunities.
+
+### Process Flow
+
+```text
+Lead Qualified
+        │
+        ▼
+Representative Initiates Conversion
+        │
+        ▼
+Create Account
+        │
+        ▼
+Create Contact
+        │
+        ▼
+Create Opportunity
+        │
+        ▼
+Assign Opportunity Owner
+        │
+        ▼
+Move To Sales Pipeline
+```
+
+### Output
+
+Sales Opportunity
+
+---
+
+# 9. Detailed Process Flow – Follow-Up Management
+
+## Objective
+
+Ensure timely customer engagement.
+
+### Process Flow
+
+```text
+Lead Or Opportunity Exists
+        │
+        ▼
+Generate Follow-Up Task
+        │
+        ▼
+Send Reminder
+        │
+        ▼
+Representative Contacts Customer
+        │
+        ▼
+Record Outcome
+        │
+        ▼
+Schedule Next Activity
+        │
+        ▼
+Update Customer Record
+```
+
+### Outputs
+
+* Updated Communication History
+* New Follow-Up Task
+
+---
+
+# 10. Detailed Process Flow – Reporting & Analytics
+
+## Objective
+
+Provide management with real-time business insights.
+
+### Process Flow
+
+```text
+User Opens Dashboard
+        │
+        ▼
+Select Reporting Period
+        │
+        ▼
+Retrieve CRM Data
+        │
+        ▼
+Calculate KPIs
+        │
+        ▼
+Generate Dashboard
+        │
+        ▼
+Display Metrics
+        │
+        ▼
+Export Report (Optional)
+```
+
+### Key Metrics
+
+* Total Leads
+* Qualified Leads
+* Converted Leads
+* Conversion Rate
+* Revenue Generated
+* Branch Performance
+* Campaign Performance
+
+---
+
+# 11. End-to-End Future State Process
+
+```text
+Customer Inquiry
+        │
+        ▼
+Lead Capture
+        │
+        ▼
+Data Validation
+        │
+        ▼
+Duplicate Check
+        │
+        ▼
+Lead Assignment
+        │
+        ▼
+Lead Qualification
+        │
+        ▼
+Customer Follow-Up
+        │
+        ▼
+Test Drive Scheduling
+        │
+        ▼
+Opportunity Creation
+        │
+        ▼
+Sales Pipeline Management
+        │
+        ▼
+Vehicle Sale
+        │
+        ▼
+Reporting & Analytics
+```
+
+---
+
+# Business Benefits Achieved
+
+* Automated lead routing
+* Faster customer response times
+* Reduced manual effort
+* Improved data quality
+* Higher lead conversion rates
+* Enhanced customer experience
+* Improved management visibility
+* Standardized dealership operations across branches
