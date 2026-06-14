@@ -85,21 +85,43 @@ This project showcases core Business Analyst deliverables including:
 | 06-Process-Flows                   | Current and future state business processes         |
 | 07-Wireframes                      | User interface wireframes                           |
 | 08-Salesforce-Solution-Design      | Salesforce architecture and solution design         |
+
 ---
 
-Project Repository Structure
-Salesforce-Dealership-Lead-Management-Business-Analysis-Case-Study/
+# Project Repository Structure
 
+```text
+Dealership-Lead-Management-Transformation/
 │
-├── 01-Problem-Statement
-├── 02-Stakeholder-Analysis
-├── 03-BRD
-├── 04-Use-Cases
-├── 05-Functional-Specification
-├── 06-Process-Flows
-├── 07-Wireframes
-├── 08-Salesforce-Solution-Design
-└── README.md
+├── README.md
+│
+├── docs/
+│   ├── 01-Problem-Statement
+│   ├── 02-Stakeholder-Analysis
+│   ├── 03-BRD
+│   ├── 04-Use-Cases
+│   ├── 05-Functional-Specification
+│   ├── 06-Process-Flows
+│   ├── 07-Wireframes
+│   ├── 08-Salesforce-Solution-Design
+│
+│ 
+│
+├── wireframes/
+│   ├── dashboard.png
+│   ├── lead-capture.png
+│   ├── lead-details.png
+│   ├── qualification.png
+│   ├── test-drive.png
+│   ├── opportunity.png
+│   ├── followup.png
+│   └── reporting-dashboard.png
+│
+└── diagrams/
+    ├── as-is-process-flow.png
+    ├── to-be-process-flow.png
+    └── solution-architecture.png
+```
 
 ---
 
