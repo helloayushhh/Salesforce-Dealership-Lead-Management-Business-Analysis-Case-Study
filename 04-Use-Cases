@@ -1,0 +1,446 @@
+# Use Case Document
+
+# Project Name
+
+Dealership Lead Management Transformation using Salesforce Automotive Cloud
+
+# Version
+
+1.0
+
+# Prepared By
+
+Ayush Pandey
+
+# Date
+
+June 2026
+
+---
+
+# UC-01: Capture Lead
+
+## Use Case ID
+
+UC-01
+
+## Use Case Name
+
+Capture Lead
+
+## Description
+
+This use case describes how customer inquiries from various channels are captured and stored in Salesforce as lead records.
+
+## Primary Actor
+
+Customer
+
+## Secondary Actors
+
+Salesforce System
+
+## Preconditions
+
+* Customer submits inquiry through an available channel.
+* Salesforce system is operational.
+
+## Trigger
+
+Customer submits a lead inquiry.
+
+## Main Flow
+
+1. Customer submits inquiry through website, social media, phone call, or showroom visit.
+2. Salesforce receives customer information.
+3. System validates mandatory fields.
+4. System creates a new lead record.
+5. Lead status is set to "New".
+6. Lead record is saved.
+
+## Alternate Flow
+
+3A. Mandatory information is missing.
+
+* System displays validation error.
+* Lead record is not created.
+
+## Postconditions
+
+* Lead record exists in Salesforce.
+* Lead is available for assignment.
+
+## Business Rules
+
+* Email and phone number are mandatory.
+* Duplicate leads must be checked before creation.
+
+---
+
+# UC-02: Auto Assign Lead
+
+## Use Case ID
+
+UC-02
+
+## Use Case Name
+
+Auto Assign Lead
+
+## Description
+
+This use case assigns newly created leads to the appropriate sales representative based on predefined business rules.
+
+## Primary Actor
+
+Salesforce System
+
+## Secondary Actor
+
+Sales Manager
+
+## Preconditions
+
+* Lead record exists.
+* Assignment rules are configured.
+
+## Trigger
+
+New lead is created.
+
+## Main Flow
+
+1. System identifies lead location.
+2. System identifies dealership branch.
+3. System identifies available sales representative.
+4. System assigns lead automatically.
+5. Notification is sent to assigned representative.
+6. Assignment activity is logged.
+
+## Alternate Flow
+
+3A. No representative is available.
+
+* Lead is assigned to Sales Manager.
+
+## Postconditions
+
+* Lead is assigned.
+* Notification is delivered.
+
+## Business Rules
+
+* Assignment based on dealership region.
+* Round-robin assignment method used.
+
+---
+
+# UC-03: Qualify Lead
+
+## Use Case ID
+
+UC-03
+
+## Use Case Name
+
+Qualify Lead
+
+## Description
+
+This use case evaluates customer interest and determines whether a lead should proceed to the sales pipeline.
+
+## Primary Actor
+
+Sales Representative
+
+## Preconditions
+
+* Lead is assigned.
+* Customer contact information exists.
+
+## Trigger
+
+Sales representative contacts customer.
+
+## Main Flow
+
+1. Representative reviews lead information.
+2. Representative contacts customer.
+3. Customer requirements are discussed.
+4. Vehicle preferences are captured.
+5. Purchase timeline is identified.
+6. Budget information is collected.
+7. Lead qualification status is updated.
+
+## Alternate Flow
+
+7A. Customer not interested.
+
+* Lead status updated to "Closed - Not Interested".
+
+7B. Unable to contact customer.
+
+* Follow-up task created.
+
+## Postconditions
+
+* Lead qualification status updated.
+
+## Business Rules
+
+* Qualified leads proceed to opportunity stage.
+* Unqualified leads remain in nurture process.
+
+---
+
+# UC-04: Schedule Test Drive
+
+## Use Case ID
+
+UC-04
+
+## Use Case Name
+
+Schedule Test Drive
+
+## Description
+
+This use case allows sales representatives to schedule vehicle test drives for qualified customers.
+
+## Primary Actor
+
+Sales Representative
+
+## Secondary Actor
+
+Customer
+
+## Preconditions
+
+* Lead is qualified.
+* Vehicle is available.
+
+## Trigger
+
+Customer requests a test drive.
+
+## Main Flow
+
+1. Representative opens customer record.
+2. Representative selects vehicle.
+3. Available time slots are displayed.
+4. Representative confirms preferred slot.
+5. Test drive appointment is created.
+6. Confirmation email is sent.
+7. Appointment appears on dealership calendar.
+
+## Alternate Flow
+
+3A. Vehicle unavailable.
+
+* Representative selects alternative vehicle.
+
+## Postconditions
+
+* Test drive appointment scheduled.
+* Customer receives confirmation.
+
+## Business Rules
+
+* Appointment must have vehicle and location assigned.
+* Confirmation notification mandatory.
+
+---
+
+# UC-05: Create Opportunity
+
+## Use Case ID
+
+UC-05
+
+## Use Case Name
+
+Create Opportunity
+
+## Description
+
+This use case converts a qualified lead into a sales opportunity.
+
+## Primary Actor
+
+Sales Representative
+
+## Preconditions
+
+* Lead status is Qualified.
+* Customer expresses purchase intent.
+
+## Trigger
+
+Customer decides to proceed with purchase discussion.
+
+## Main Flow
+
+1. Representative opens lead record.
+2. Representative selects "Convert Lead".
+3. System creates Account.
+4. System creates Contact.
+5. System creates Opportunity.
+6. Opportunity assigned to representative.
+7. Opportunity enters sales pipeline.
+
+## Alternate Flow
+
+5A. Duplicate customer exists.
+
+* Existing account linked.
+
+## Postconditions
+
+* Opportunity created successfully.
+
+## Business Rules
+
+* Only qualified leads can be converted.
+* Opportunity owner must match lead owner.
+
+---
+
+# UC-06: Manage Follow-Up Activities
+
+## Use Case ID
+
+UC-06
+
+## Use Case Name
+
+Manage Follow-Up Activities
+
+## Description
+
+This use case ensures timely engagement with customers throughout the sales cycle.
+
+## Primary Actor
+
+Sales Representative
+
+## Secondary Actor
+
+Salesforce System
+
+## Preconditions
+
+* Lead or Opportunity exists.
+
+## Trigger
+
+Follow-up action is required.
+
+## Main Flow
+
+1. System generates follow-up task.
+2. Representative receives reminder.
+3. Representative contacts customer.
+4. Interaction details recorded.
+5. Follow-up status updated.
+6. Next action scheduled.
+
+## Alternate Flow
+
+3A. Customer unavailable.
+
+* New follow-up task scheduled.
+
+## Postconditions
+
+* Communication history maintained.
+
+## Business Rules
+
+* Every qualified lead must have an active follow-up task.
+* Follow-up reminders generated automatically.
+
+---
+
+# UC-07: Generate Performance Reports
+
+## Use Case ID
+
+UC-07
+
+## Use Case Name
+
+Generate Performance Reports
+
+## Description
+
+This use case allows management to monitor sales and lead management performance.
+
+## Primary Actor
+
+Sales Manager
+
+## Secondary Actor
+
+Regional Operations Manager
+
+## Preconditions
+
+* Data exists in Salesforce.
+
+## Trigger
+
+Manager requests performance report.
+
+## Main Flow
+
+1. User opens reporting dashboard.
+2. User selects reporting period.
+3. System retrieves data.
+4. Dashboard displays KPIs.
+5. User reviews metrics.
+6. Report exported if required.
+
+## Alternate Flow
+
+3A. No data available.
+
+* System displays informational message.
+
+## Postconditions
+
+* Performance report generated.
+
+## Business Rules
+
+* Reports update in real time.
+* Access restricted by user role.
+
+---
+
+# Use Case Summary Matrix
+
+| Use Case ID | Use Case Name                | Primary Actor        |
+| ----------- | ---------------------------- | -------------------- |
+| UC-01       | Capture Lead                 | Customer             |
+| UC-02       | Auto Assign Lead             | Salesforce System    |
+| UC-03       | Qualify Lead                 | Sales Representative |
+| UC-04       | Schedule Test Drive          | Sales Representative |
+| UC-05       | Create Opportunity           | Sales Representative |
+| UC-06       | Manage Follow-Up Activities  | Sales Representative |
+| UC-07       | Generate Performance Reports | Sales Manager        |
+
+---
+
+# End-to-End Business Flow
+
+Capture Lead
+→ Assign Lead
+→ Qualify Lead
+→ Schedule Test Drive
+→ Create Opportunity
+→ Follow-Up Activities
+→ Vehicle Sale
+→ Reporting & Analytics
+
+These use cases collectively define the dealership lead management lifecycle and serve as the foundation for solution design, functional specifications, development, testing, and user acceptance activities.
